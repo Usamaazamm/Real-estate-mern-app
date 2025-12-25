@@ -4,11 +4,14 @@ import About from "./Pages/About";
 import SignIn from "./Pages/SignIn";
 import SignOut from "./Pages/SignOut";
 import Profile from "./Pages/Profile";
+import Header from "./Components/Header";
 
 const App=()=> {
   return (
     <>
       <Router>
+        <Header></Header>
+      
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
