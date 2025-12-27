@@ -1,21 +1,26 @@
-import express from "express";
-import dotenv from "dotenv";
-import conn from "./connectdb.js";
-
-dotenv.config();
+import express from 'express';
+import dotenv from 'dotenv';
+import conn from './connectdb.js'
+import router from './Api/Routes/userRoute.js';
 
 conn();
-
 const app = express();
+app.use(express.json());
 
-const port = process.env.PORT;
+
 
 app.get("/", (req, res) => {
-  res.status(200).send({
-    message: "everything is working now",
-  });
+  res.send({
+    message:"everthing is working now"
+  })
+})
+
+
+
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+  console.log(`app is working on port ${port}`)
 });
 
-app.listen(port, (req, res) => {
-  console.log(`app is running on port ${port}`);
-});
+app.use("/api/auth", router)
